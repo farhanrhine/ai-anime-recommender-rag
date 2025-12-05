@@ -16,6 +16,9 @@ COPY pyproject.toml uv.lock ./
 # Now copy the application code (lightweight)
 COPY src ./src
 
+# Set Python path to include src directory
+ENV PYTHONPATH=/app/src
+
 # Install dependencies using UV (super fast)
 RUN uv sync --frozen
 

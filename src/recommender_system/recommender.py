@@ -42,4 +42,8 @@ class AnimeRecommender:
                 return result.content
             return str(result)
         except Exception as e:
+            import traceback
+            logger.error(f"Exception type: {type(e).__name__}")
+            logger.error(f"Exception message: {str(e)}")
+            logger.error(f"Full traceback:\n{traceback.format_exc()}")
             raise CustomException("Failed to generate recommendation", e)

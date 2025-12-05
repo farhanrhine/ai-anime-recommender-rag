@@ -35,3 +35,6 @@ data/*.csv
 *.pyc
 *.pyo
 *.pyd
+
+
+dockernote.md
