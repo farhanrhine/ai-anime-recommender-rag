@@ -39,6 +39,10 @@ pytest_cache/
 poetry.lock
 
 create_structure.py
+kubernates.md
+dockernote.md
+notes.md
+kubernates/
 
 
 data/
