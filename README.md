@@ -2,6 +2,18 @@
 
 RAG-powered Anime Recommendation System using **LangChain**, **ChromaDB**, **Groq LLM**, deployed on **GKE Autopilot** with **Grafana Cloud** monitoring and **LangSmith** tracing.
 
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/🦜_LangChain-RAG-green)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_Store-orange)
+![Groq](https://img.shields.io/badge/Groq-Llama_3.1-purple)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.123-009688?logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-GKE-326CE5?logo=kubernetes&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-Cloud-F46800?logo=grafana&logoColor=white)
+![LangSmith](https://img.shields.io/badge/LangSmith-Tracing-blue)
+
 ---
 
 ## 🛠️ Tech Stack
@@ -122,7 +134,15 @@ uv run streamlit run app/streamlit_app.py
 
 ## 🐳 Docker
 
-### Build Image
+### 📥 Pull from DockerHub
+
+```bash
+docker pull farhanrhine/anime-recommender-api:latest
+```
+
+[![Docker Hub](https://img.shields.io/docker/pulls/farhanrhine/anime-recommender-api?style=flat&logo=docker&label=Docker%20Pulls)](https://hub.docker.com/r/farhanrhine/anime-recommender-api)
+
+### Build Image (Optional)
 
 ```bash
 docker build -t farhanrhine/anime-recommender-api -f docker/Dockerfile .
