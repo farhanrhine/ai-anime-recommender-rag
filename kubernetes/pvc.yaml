@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: anime-chroma-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: chroma-storage
+  resources:
+    requests:
+      storage: 20Gi

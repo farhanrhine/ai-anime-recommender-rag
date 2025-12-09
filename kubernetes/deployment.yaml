@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anime-recommender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anime-recommender
+  template:
+    metadata:
+      labels:
+        app: anime-recommender
+    spec:
+      containers:
+        - name: anime-api
+          image: farhanrhine/anime-recommender-api:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GROQ_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: GROQ_API_KEY
+
+            - name: HUGGINGFACEHUB_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: HUGGINGFACEHUB_API_TOKEN
+
+            - name: LANGCHAIN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: LANGCHAIN_API_KEY
+
+            - name: LANGCHAIN_TRACING_V2
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: LANGCHAIN_TRACING_V2
+
+            - name: LANGCHAIN_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: LANGCHAIN_ENDPOINT
+
+            - name: LANGCHAIN_PROJECT
+              valueFrom:
+                secretKeyRef:
+                  name: anime-secrets
+                  key: LANGCHAIN_PROJECT
+
+          volumeMounts:
+            - name: chroma-storage
+              mountPath: /app/chroma_db
+
+      volumes:
+        - name: chroma-storage
+          persistentVolumeClaim:
+            claimName: anime-chroma-pvc
