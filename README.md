@@ -1,6 +1,6 @@
 # 🎌 AI Anime Recommender System
 
-RAG-powered Anime Recommendation System using **LangChain**, **ChromaDB**, **Groq LLM**, deployed on **GKE Autopilot** with **Grafana Cloud** monitoring and **LangSmith** tracing.
+RAG-powered Anime Recommendation System using **LangChain**, **ChromaDB**, **Groq LLM**, deployed on **GKE Autopilot** with **LangSmith** tracing.
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![LangChain](https://img.shields.io/badge/🦜_LangChain-RAG-green)
@@ -12,7 +12,7 @@ RAG-powered Anime Recommendation System using **LangChain**, **ChromaDB**, **Gro
 ![GCP](https://img.shields.io/badge/Google_Cloud-GCP-4285F4?logo=googlecloud&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-GKE-326CE5?logo=kubernetes&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-Cloud-F46800?logo=grafana&logoColor=white)
+
 ![LangSmith](https://img.shields.io/badge/LangSmith-Tracing-blue)
 
 ---
@@ -29,7 +29,7 @@ RAG-powered Anime Recommendation System using **LangChain**, **ChromaDB**, **Gro
 | Package Manager | UV |
 | Container | Docker |
 | Deployment | GKE Autopilot + GitHub Actions CI/CD |
-| Observability | LangSmith + Grafana Cloud |
+| Observability | LangSmith |
 
 ---
 
@@ -51,12 +51,12 @@ User Query
                                                 │  (Llama 3.1)    │
                                                 └────────┬────────┘
                                                          │
-                        ┌────────────────────────────────┼────────────────────────────────┐
-                        ▼                                ▼                                ▼
-                ┌──────────────┐                ┌──────────────┐                ┌──────────────┐
-                │  LangSmith   │                │ Grafana Cloud│                │     GKE      │
-                │  Tracing     │                │  Monitoring  │                │  Autopilot   │
-                └──────────────┘                └──────────────┘                └──────────────┘
+                        ┌────────────────────────────────┴────────────────────────────────┐
+                        ▼                                                                 ▼
+                ┌──────────────┐                                                 ┌──────────────┐
+                │  LangSmith   │                                                 │     GKE      │
+                │  Tracing     │                                                 │  Autopilot   │
+                └──────────────┘                                                 └──────────────┘
 ```
 
 ---
@@ -228,7 +228,13 @@ GitHub Actions auto-deploys to GKE on push to `main`.
 ### Example Request
 
 ```bash
+# Local
 curl -X POST http://localhost:8000/recommend \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Action anime with epic fights"}'
+
+# GCP Deployment
+curl -X POST http://136.111.237.172:8000/recommend \
   -H "Content-Type: application/json" \
   -d '{"query": "Action anime with epic fights"}'
 ```

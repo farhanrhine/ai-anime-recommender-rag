@@ -19,8 +19,8 @@ st.set_page_config(
 # =============================================================================
 
 # Define the FastAPI endpoint
-API_BASE_URL = "http://localhost:8000" # Use this for local testing
-# API_BASE_URL = "http://34.226.152.222:8000"  # Use this for deployed API
+# API_BASE_URL = "http://localhost:8000" # Use this for local testing
+API_BASE_URL = "http://136.111.237.172:8000/"  # Use this for deployed API
 
 # =============================================================================
 # API FUNCTIONS
